@@ -1,43 +1,31 @@
 import React, { Component } from "react";
-import axios from "axios";
+import PropTypes from "prop-types";
 
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 
 import Dog from "../components/Dog";
 
-export default class DogList extends Component {
-  state = {
-    dogs: []
-  };
+const DogList = ({ dogs }) => (
+  <React.Fragment>
+    {dogs.length ? (
+      dogs.map(dog => (
+        <Grid item xs key={dog}>
+          <Dog url={dog} title={dog.split("/")[4]} />
+        </Grid>
+      ))
+    ) : (
+      <Typography>No dogs</Typography>
+    )}
+  </React.Fragment>
+);
 
-  componentDidMount() {
-    axios
-      .get("https://dog.ceo/api/breeds/image/random/10")
-      .then(response => response.data)
-      .then(({ status, message }) => {
-        if (status === "success") {
-          this.setState({
-            dogs: message
-          });
-        }
-      });
-  }
+DogList.defaultProps = {
+  dogs: []
+};
 
-  render() {
-    const { dogs } = this.state;
-    return (
-      <React.Fragment>
-        {dogs.length ? (
-          dogs.map(dog => (
-            <Grid item xs key={dog}>
-              <Dog url={dog} title={dog.split("/")[4]} />
-            </Grid>
-          ))
-        ) : (
-          <Typography>No dogs</Typography>
-        )}
-      </React.Fragment>
-    );
-  }
-}
+DogList.propTypes = {
+  dogs: PropTypes.array
+};
+
+export default DogList;
