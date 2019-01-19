@@ -11,7 +11,7 @@ const styles = theme => ({
   container: {
     display: "flex",
     backgroundColor: "lightgray",
-    height: "80vw",
+    height: "auto",
     margin: "0px",
     marginTop: "20px",
     width: "100%"

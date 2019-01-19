@@ -9,6 +9,8 @@ import JssProvider from "react-jss/lib/JssProvider";
 
 import getPageContext from "../src/utils/getPageContext";
 
+import Layout from "../src/components/Layout";
+
 export default class NextApp extends App {
   constructor() {
     super();
@@ -43,7 +45,9 @@ export default class NextApp extends App {
           >
             {/* Pass pageContext to the _document though the renderPage enhancer
                   to render collected styles on server-side. */}
-            <Component pageContext={this.pageContext} {...pageProps} />
+            <Layout>
+              <Component pageContext={this.pageContext} {...pageProps} />
+            </Layout>
           </MuiThemeProvider>
         </JssProvider>
       </Container>

@@ -1,4 +1,7 @@
 import React from "react";
+
+import Link from "next/link";
+
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -18,9 +21,13 @@ function SimpleAppBar(props) {
     <div className={classes.root}>
       <AppBar position="static" color="default">
         <Toolbar>
-          <Typography variant="h6" color="inherit">
-            Photos
-          </Typography>
+          <Link href="/">
+            <a>
+              <Typography variant="h6" color="inherit">
+                Photos
+              </Typography>
+            </a>
+          </Link>
         </Toolbar>
       </AppBar>
     </div>

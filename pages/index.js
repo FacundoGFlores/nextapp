@@ -1,8 +1,6 @@
 import React from "react";
 import axios from "axios";
 
-import Layout from "../src/components/Layout";
-
 import DogList from "../src/containers/DogList";
 
 class App extends React.Component {
@@ -18,11 +16,7 @@ class App extends React.Component {
   }
 
   render() {
-    return (
-      <Layout>
-        <DogList dogs={this.props.dogs} />
-      </Layout>
-    );
+    return <DogList dogs={this.props.dogs} />;
   }
 }
 
